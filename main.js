@@ -10,6 +10,7 @@ const taskname=document.getElementById("taskname")
 const Priority=document.getElementById("Priority") 
 const statuss=document.getElementById("status")
 const date=document.getElementById("date")
+let ID=4;
 async function getData(){
     try {
         const response = await (await fetch('http://localhost:3002/DATA')).json()
@@ -23,7 +24,7 @@ const renderData=(data)=>
 {
       data.forEach(item => {
           const newItem=`
-          <li class="w-12/12  h-[50px] flex">
+          <li class="w-12/12  h-[50px] flex id=${ID}">
           <div class="w-[20%] text-center self-center">${item.TaskName}</div>
           <div class="w-[20%] text-center self-center" id="priority">${item.Priority}</div>
           <div class="w-[20%] text-center self-center">${item.Status}</div>
@@ -63,7 +64,7 @@ const renderData=(data)=>
     submitmodal.addEventListener('click',(e)=>
     {
         const newData = {
-            // "id":10,
+            "id":ID,
             "TaskName":`${taskname.value}`,
             "Priority":`${Priority.value}`,
             "Status":`${statuss.value}`,
@@ -79,14 +80,8 @@ const renderData=(data)=>
         })
         container.style.display="block"
         addmodal.style.display="none"
+        ID=ID+1;
     })
-   const newData = {
-    "id":10,
-    "TaskName":'TASK4',
-    "Priority":"Low",
-    "Status":"Todo",
-    "Deadline":"date4"
-}
     
 //using xmlhttprequest:
 // const getCountryData = function () {
