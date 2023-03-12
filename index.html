@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HW12</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+  </head>
+  <body>
+    <div class="my-container w-12/12">
+      <nav class="w-12/12 flex bg-purple-600">
+        <div class="w-8/12  p-3 text-4xl text-white">my Todo Task</div>
+        <div class="w-4/12  p-3 flex justify-evenly">
+          <input class="pl-3 rounded-md" type="search" placeholder="🔍 search here">
+          <div class="text-3xl text-white"><ion-icon name="filter"></ion-icon></div>
+          <div class="text-3xl text-white" id="addbtn"><ion-icon name="add-circle"></ion-icon></div>
+        </div>
+      </nav>
+      <ul class="item-display" id="item-display">
+        <li class="w-12/12  h-[50px] flex">
+          <div class="w-[20%] border-black border-2 text-center self-center">Task Name</div>
+          <div class="w-[20%] border-black border-2 text-center self-center">Priority</div>
+          <div class="w-[20%] border-black border-2 text-center self-center">Status</div>
+          <div class="w-[20%] border-black border-2 text-center self-center">Deadline</div>
+          <div class="w-[20%] border-black border-2 text-center self-center">Actions</div>
+          <div class="w-[20%] text-center self-center justify-evenly hidden">
+            <button class="bg-red-600 rounded-full w-[80px] text-white">delete</button>
+            <button class="bg-blue-500 rounded-full w-[80px] text-white">edit</button>
+            <button class="bg-gray-600 rounded-full w-[80px] text-white">view</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- modal for add button: -->
+    <div class="hidden w-[700px] h-[180px] border-[2px] text-center m-auto mt-[200px] " id="addmodal">
+      <form action="">
+
+        <label for="taskName">Task Name:</label>
+        <input required type="text" name="taskName" class="mb-3 pl-2 border-2 rounded-full" placeholder="Enter Your Task Name"><br>
+
+        <label for="priority">priority:</label>
+        <select class="mb-3 rounded-full" id="priority" name="priority">
+          <option value="low">low</option>
+          <option value="saab">medium</option>
+          <option value="vw">high</option>
+        </select><br>
+
+        <label for="status">status:</label>
+        <select class="mb-3 rounded-full" id="status" name="status">
+          <option value="Todo">Todo</option>
+          <option value="Doing">Doing</option>
+          <option value="Done">Done</option>
+        </select><br>
+
+        <input required type="date" class="mb-3 rounded-full pl-1"><br>
+
+        <input class="bg-blue-400 rounded-full w-[150px]" type="submit" value="Add New Task">
+
+      </form>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

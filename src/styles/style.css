@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg-ariancard{
+    background-color: aqua;
+    font-weight: bold;
+    color: yellowgreen;
+    font-size: 200%;
+}
+.low-priority{
+    background-color: silver;
+}
+.med-priority
+{
+    background-color: yellow;
+}
+.high-priority
+{
+    background-color: red;
+}
