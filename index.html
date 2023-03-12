@@ -38,13 +38,13 @@
       <form action="">
 
         <label for="taskName">Task Name:</label>
-        <input required type="text" name="taskName" class="mb-3 pl-2 border-2 rounded-full" placeholder="Enter Your Task Name"><br>
+        <input required type="text" name="taskName" class="mb-3 pl-2 border-2 rounded-full" id="taskname" placeholder="Enter Your Task Name"><br>
 
         <label for="priority">priority:</label>
-        <select class="mb-3 rounded-full" id="priority" name="priority">
+        <select class="mb-3 rounded-full" id="Priority" name="priority">
           <option value="low">low</option>
-          <option value="saab">medium</option>
-          <option value="vw">high</option>
+          <option value="medium">medium</option>
+          <option value="high">high</option>
         </select><br>
 
         <label for="status">status:</label>
@@ -54,9 +54,9 @@
           <option value="Done">Done</option>
         </select><br>
 
-        <input required type="date" class="mb-3 rounded-full pl-1"><br>
+        <input required type="date" class="mb-3 rounded-full pl-1" id="date"><br>
 
-        <input class="bg-blue-400 rounded-full w-[150px]" type="submit" value="Add New Task">
+        <input class="bg-blue-400 rounded-full w-[150px]" id="submitmodal" type="submit" value="Add New Task">
 
       </form>
     </div>
