@@ -1,6 +1,5 @@
 'use strict'
-
-const body=document.getElementsByTagName('body')    
+import { debounce } from "lodash"
 const container=document.querySelector(".my-container")
 const itemdisplay=document.querySelector("#item-display")
 const priority=document.querySelector("#priority")
@@ -14,9 +13,9 @@ const statuss=document.getElementById("status")
 const date=document.getElementById("date")
 const search=document.getElementById("searchbar")
 let ID=4;
-async function getData(){
+async function getData(url = 'http://localhost:3002/DATA'){
     try {
-        const response = await (await fetch('http://localhost:3002/DATA')).json()
+        const response = await (await fetch(url)).json()
         const data = await response;
       console.log(data)
       renderData(data)
@@ -151,7 +150,7 @@ const renderData=(data)=>
         else if(target.innerHTML==="view")
         viewFunc(target)
    })
-//    add li:
+//    add item:
 addbtn.addEventListener('click',(e)=>
 {
     e.preventDefault()
@@ -185,15 +184,22 @@ async function addNEW()
         addNEW(e)
     })
     
-//using xmlhttprequest:
-// const getCountryData = function () {
-    //     const request = new XMLHttpRequest();
-    //     request.open('GET', 'http://localhost:3002/DATA');
-//     request.send();
-//     request.addEventListener('load', function () {
-//       const [data] =JSON.parse(request.responseText);
-//       console.log(data);
-//     })
-// }
-// getCountryData()
 
+    //search section:
+    search.addEventListener("input",
+        debounce(() => {
+          Search();
+        }, 1000)
+      )
+    const Search = () => {
+      itemdisplay.innerHTML = "";
+      if(search.value!=='')
+      {
+          getData(`http://localhost:3002/DATA?q=${search.value}`);
+      }
+      else if(search.value==='')
+      {
+        getData()
+      }
+    }
+    
