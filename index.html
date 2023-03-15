@@ -30,6 +30,11 @@
       </li>
       <ul class="item-display" id="item-display">
       </ul>
+      <div class="paginate flex" dir="rtl" id="paginate">
+        <button class="font-bold border-black border-[1px]" id="next-page">NextPage</button>
+        <div class="border-black border-[3px] " id="pagenumber">1</div>
+        <button class="font-bold border-black border-[1px]" id="previous-page">PreviousPage</button>
+      </div>
     </div>
 
 
@@ -68,23 +73,24 @@
           <div class="mb-10 border-[1px] border-black text-center">
             <label for="priority">priority:</label>
             <select class="mb-3 rounded-full bg-gray-400" id="filter-Priority" name="priority">
-              <option value="Low" id="low-filter">low</option>
-              <option value="Medium" id="medium-filter">medium</option>
-              <option value="High" id="high-filter">high</option>
+              <option value="Low">low</option>
+              <option value="Medium">medium</option>
+              <option value="High">high</option>
             </select><br>
           </div>
           <div class="border-[1px] text-center border-black">
             <label for="status">status:</label>
             <select class="mb-3 rounded-full bg-gray-400" id="filter-status" name="status">
-              <option value="Todo" id="todo-filter">Todo</option>
-              <option value="Doing" id="doing-filter">Doing</option>
-              <option value="Done" id="done-filter">Done</option>
+              <option value="Todo">Todo</option>
+              <option value="Doing">Doing</option>
+              <option value="Done">Done</option>
             </select><br>
           </div>
           <input type="submit" id="submitfilterbtn">
         </form>
       </div>
   </div>
+  <div class="loading text-6xl" id="loading">Loading...</div>
     <script type="module" src="/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

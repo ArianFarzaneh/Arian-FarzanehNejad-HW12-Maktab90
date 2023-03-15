@@ -2,8 +2,6 @@
 import { debounce } from "lodash"
 const container=document.querySelector(".my-container")
 const itemdisplay=document.querySelector("#item-display")
-const priority=document.querySelector("#priority")
-const deleteBtn = document.getElementsByClassName('.delete-btn')
 const addbtn=document.getElementById("addbtn")
 const addmodal=document.getElementById("addmodal")
 const submitmodal=document.getElementById("submitmodal")
@@ -14,33 +12,27 @@ const date=document.getElementById("date")
 const search=document.getElementById("searchbar")
 const filterbtn=document.getElementById("filterbtn")
 const filtermodal=document.getElementById("filter-modal")
-// const lowfilter=document.getElementById("low-filter")
-// const mediumfilter=document.getElementById("medium-filter")
-// const highfilter=document.getElementById("high-filter")
-// const todofilter=document.getElementById("todo-filter")
-// const doingfilter=document.getElementById("doing-filter")
-// const donefilter=document.getElementById("done-filter")
 const filterpriority=document.getElementById("filter-Priority")
 const filterstatus=document.getElementById("filter-status")
-
 const submitfilterbtn=document.getElementById("submitfilterbtn")
+const paginate=document.getElementById("paginate")
+const nextpage=document.getElementById("next-page")
+const previouspage=document.getElementById("previous-page")
+const pagenumber=document.getElementById("pagenumber")
+const loading=document.getElementById("loading")
+let counter=1
 let ID=4;
-async function getData(url = 'http://localhost:3002/DATA'){
+async function getData(url = 'http://localhost:3002/DATA?_page=1&_limit=2'){
     try {
         const response = await (await fetch(url)).json()
         const data = await response;
-      console.log(data)
+        loading.classList.add('hidden')
       renderData(data)
     } catch (err) { alert(`your error is: ${err}`)}
 };
 getData();
 const renderData=(data)=>
 {
-    // let prioritycondition=''
-    // if(item.Priority==='Low')
-    // {
-    //     prioritycondition="text-red-700"
-    // }
       data.forEach(item => {
           const newItem=`
           <li class="w-12/12  h-[50px] flex" id="${item.id}">
@@ -58,6 +50,41 @@ const renderData=(data)=>
         });
         
     }
+
+    //    add item:
+addbtn.addEventListener('click',()=>
+{
+    container.style.display="none"
+    addmodal.style.display="block"
+})
+async function addNEW(e)
+{
+
+    const newData = {
+        "id":ID,
+        "TaskName":`${taskname.value}`,
+        "Priority":`${Priority.value}`,
+        "Status":`${statuss.value}`,
+        "Deadline":`${date.value}`
+    }
+    await fetch('http://localhost:3002/DATA',
+    {
+        method:'POST',
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify(newData)
+    })
+    container.style.display="block"
+    addmodal.style.display="none"
+    ID=ID+1;
+}
+    submitmodal.addEventListener('click',(e)=>
+    {
+        addNEW(e)
+    })
+
+
     // delete section:
     function deleteFunc(target)
     {
@@ -162,39 +189,7 @@ const renderData=(data)=>
         else if(target.innerHTML==="view")
         viewFunc(target)
    })
-//    add item:
-addbtn.addEventListener('click',(e)=>
-{
-    e.preventDefault()
-    container.style.display="none"
-    addmodal.style.display="block"
-})
-async function addNEW()
-{
 
-    const newData = {
-        "id":ID,
-        "TaskName":`${taskname.value}`,
-        "Priority":`${Priority.value}`,
-        "Status":`${statuss.value}`,
-        "Deadline":`${date.value}`
-    }
-    fetch('http://localhost:3002/DATA',
-    {
-        method:'POST',
-        headers:{
-            'content-type':'application/json'
-        },
-        body:JSON.stringify(newData)
-    })
-    container.style.display="block"
-    addmodal.style.display="none"
-    ID=ID+1;
-}
-    submitmodal.addEventListener('click',(e)=>
-    {
-        addNEW(e)
-    })
     
 
     //search section:
@@ -216,7 +211,6 @@ async function addNEW()
     }
 
     //filter section:
-    
     filterbtn.addEventListener('click',(e)=>
     {
         e.preventDefault()
@@ -235,3 +229,22 @@ async function addNEW()
     })
 
     
+// pagination 
+paginate.addEventListener('click',(e)=>
+{
+    let target = e.target
+    if(target.innerHTML==='NextPage')
+    {
+        itemdisplay.innerHTML=''
+        counter+=1
+        pagenumber.innerHTML=`${counter}`
+        getData(`http://localhost:3002/DATA?_page=${counter}&_limit=2`)
+    }
+    else if(target.innerHTML==='PreviousPage')
+    {
+        itemdisplay.innerHTML=''
+        counter-=1
+        pagenumber.innerHTML=`${counter}`
+        getData(`http://localhost:3002/DATA?_page=${counter}&_limit=2`)
+    }
+})
