@@ -12,7 +12,7 @@
         <div class="w-8/12  p-3 text-4xl text-white">my Todo Task</div>
         <div class="w-4/12  p-3 flex justify-evenly">
           <input class="pl-3 rounded-md" type="search" id="searchbar" placeholder="🔍 search here">
-          <div class="text-3xl text-white"><ion-icon name="filter"></ion-icon></div>
+          <div class="text-3xl text-white" id="filterbtn"><ion-icon name="filter"></ion-icon></div>
           <div class="text-3xl text-white" id="addbtn"><ion-icon name="add-circle"></ion-icon></div>
         </div>
       </nav>
@@ -60,6 +60,31 @@
 
       </form>
     </div>
+
+
+  <div class="hidden bg-blue-200" id="filter-modal">
+      <div class=" ml-auto border-black border-2 bg-gray-400 w-80 h-[100vh] pt-10 pl-20">
+        <form action="">
+          <div class="mb-10 border-[1px] border-black text-center">
+            <label for="priority">priority:</label>
+            <select class="mb-3 rounded-full bg-gray-400" id="filter-Priority" name="priority">
+              <option value="Low" id="low-filter">low</option>
+              <option value="Medium" id="medium-filter">medium</option>
+              <option value="High" id="high-filter">high</option>
+            </select><br>
+          </div>
+          <div class="border-[1px] text-center border-black">
+            <label for="status">status:</label>
+            <select class="mb-3 rounded-full bg-gray-400" id="filter-status" name="status">
+              <option value="Todo" id="todo-filter">Todo</option>
+              <option value="Doing" id="doing-filter">Doing</option>
+              <option value="Done" id="done-filter">Done</option>
+            </select><br>
+          </div>
+          <input type="submit" id="submitfilterbtn">
+        </form>
+      </div>
+  </div>
     <script type="module" src="/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

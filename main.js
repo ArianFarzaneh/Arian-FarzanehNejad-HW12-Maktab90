@@ -12,6 +12,18 @@ const Priority=document.getElementById("Priority")
 const statuss=document.getElementById("status")
 const date=document.getElementById("date")
 const search=document.getElementById("searchbar")
+const filterbtn=document.getElementById("filterbtn")
+const filtermodal=document.getElementById("filter-modal")
+// const lowfilter=document.getElementById("low-filter")
+// const mediumfilter=document.getElementById("medium-filter")
+// const highfilter=document.getElementById("high-filter")
+// const todofilter=document.getElementById("todo-filter")
+// const doingfilter=document.getElementById("doing-filter")
+// const donefilter=document.getElementById("done-filter")
+const filterpriority=document.getElementById("filter-Priority")
+const filterstatus=document.getElementById("filter-status")
+
+const submitfilterbtn=document.getElementById("submitfilterbtn")
 let ID=4;
 async function getData(url = 'http://localhost:3002/DATA'){
     try {
@@ -202,4 +214,24 @@ async function addNEW()
         getData()
       }
     }
+
+    //filter section:
+    
+    filterbtn.addEventListener('click',(e)=>
+    {
+        e.preventDefault()
+        filtermodal.style.display='block'
+        container.style.display='none'
+    })
+    submitfilterbtn.addEventListener('click',(e)=>
+    {
+        e.preventDefault()
+        filtermodal.style.display='none'
+        container.style.display='block'
+        console.log(filterpriority.value);
+        console.log(filterstatus.value);
+        itemdisplay.innerHTML = "";
+        getData(`http://localhost:3002/DATA?Priority=${filterpriority.value}&Status=${filterstatus.value}`)
+    })
+
     
