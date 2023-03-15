@@ -20,48 +20,6 @@
       "Priority": "Medium",
       "Status": "Done",
       "Deadline": "2020-12-01"
-    },
-    {
-      "id": 4,
-      "TaskName": "task mamad",
-      "Priority": "medium",
-      "Status": "Done",
-      "Deadline": "2023-03-22"
-    },
-    {
-      "id": 5,
-      "TaskName": "egeg",
-      "Priority": "low",
-      "Status": "Todo",
-      "Deadline": "2023-03-07"
-    },
-    {
-      "id": 6,
-      "TaskName": "task shomare 10",
-      "Priority": "medium",
-      "Status": "Todo",
-      "Deadline": "2023-02-28"
-    },
-    {
-      "id": 7,
-      "TaskName": "hello",
-      "Priority": "low",
-      "Status": "Todo",
-      "Deadline": "2023-03-16"
-    },
-    {
-      "id": 8,
-      "TaskName": "d",
-      "Priority": "low",
-      "Status": "Todo",
-      "Deadline": "2023-03-15"
-    },
-    {
-      "id": 9,
-      "TaskName": "task shomare 10",
-      "Priority": "low",
-      "Status": "Todo",
-      "Deadline": "2023-03-09"
     }
   ]
 }
